@@ -70,7 +70,10 @@ public class Field {
     void show() {
         for (char[] cell : cells) {
             for (char c : cell) {
-                System.out.print(c);
+//                System.out.print(c);
+                if (c == 'X') {
+                    System.out.print('.');
+                } else System.out.print(c);
             }
             System.out.println();
         }
