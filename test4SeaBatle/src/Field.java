@@ -4,11 +4,12 @@ import java.lang.reflect.Array;
  * Created by oi07 on 20.04.2017.
  */
 public class Field {
-    //final int SIZE = 10;
+    int size;
     char[][] cells;
     Ship ship;
 
     void init(int size) {
+        this.size = size;
         cells = new char[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -19,8 +20,31 @@ public class Field {
         }
     }
 
-    void setShip(Ship ship){
-        cells[ship.position][ship.position] = 'X';
+    void setShip(){
+//        cells[ship.position][ship.position] = 'X';
+        Ship ship;
+        boolean isCreate = false;
+        do {
+            ship = new Ship(size);
+            if (ship.isVertical)
+            {
+                if (ship.positionY + ship.size < size) {
+                    for (int i = 0; i < ship.size; i++) {
+                        cells[ship.positionX][ship.positionY + i] = 'X';
+                    }
+                    isCreate = true;
+                }
+            }
+            if (!ship.isVertical) ;
+            {
+                if (ship.positionX + ship.size < size) {
+                    for (int i = 0; i < ship.size; i++) {
+                        cells[ship.positionX + i][ship.positionY] = 'X';
+                    }
+                    isCreate = true;
+                }
+            }
+        } while (!isCreate);
         this.ship = ship;
     }
 

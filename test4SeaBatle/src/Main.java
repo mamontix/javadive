@@ -5,12 +5,12 @@ public class Main {
     public static void main(String[] args) {
         Field field = new Field();
         Player player = new Player();
-        Ship ship = new Ship();
+//        Ship ship = new Ship();
 
         System.out.println("Начало игры");
 
         field.init(player.getFieldSize());
-//        field.setShip(ship);
+        field.setShip();
 
         do {
             field.show();
