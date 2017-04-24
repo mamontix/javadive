@@ -16,6 +16,7 @@ public class Main {
             field.show();
             field.doShoot(player.getShoot());
         }while (field.isNotGameOver());
+        field.show();
         System.out.println("Корабль потоплен!");
     }
 }
