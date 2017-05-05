@@ -1,6 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 /**
  * Created by oi07 on 20.04.2017.
  */
@@ -70,7 +67,7 @@ public class Field {
             case 'X':
                 System.out.println("Корабль подбит!");
                 cells[shoot.X][shoot.Y] = '-';
-                showShoots();
+                show();
                 break;
             case '*':
                 System.out.println("Уже стреляли!");
@@ -83,7 +80,7 @@ public class Field {
         }
     }
 
-    void showShoots() {
+    void show() {
         for (char[] cell : cells) {
             for (char c : cell) {
 //                System.out.print(c);
