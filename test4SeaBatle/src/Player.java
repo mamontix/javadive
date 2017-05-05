@@ -6,11 +6,13 @@ import java.util.Scanner;
 public class Player {
     Shoot getShoot(){
         Shoot shoot = new Shoot();
+        String y = "";
+        String x = "";
         System.out.println("Куда стрелять?");
         Scanner scanner = new Scanner(System.in);
-        String x = scanner.nextLine();
-        String y = scanner.nextLine();
-        System.out.printf("Вы ввели: %s:%s\n", x, y);
+        do {y = scanner.nextLine();} while (y.isEmpty());
+        do {x = scanner.nextLine();} while (x.isEmpty());
+        System.out.printf("Вы ввели: %s:%s\n", y, x);
         shoot.X = Integer.parseInt(x)-1;
         shoot.Y = Integer.parseInt(y)-1;
         return shoot;

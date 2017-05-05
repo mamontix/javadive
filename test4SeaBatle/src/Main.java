@@ -13,7 +13,7 @@ public class Main {
         field.setShip();
 
         do {
-            field.show();
+            field.showShoots();
             field.doShoot(player.getShoot());
         }while (field.isNotGameOver());
         System.out.println("Корабль потоплен!");

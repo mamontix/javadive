@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Created by oi07 on 20.04.2017.
@@ -35,7 +36,7 @@ public class Field {
                     isCreate = true;
                 }
             }
-            if (!ship.isVertical) ;
+            if (!ship.isVertical)
             {
                 if (ship.positionX + ship.size < size) {
                     for (int i = 0; i < ship.size; i++) {
@@ -48,8 +49,20 @@ public class Field {
         this.ship = ship;
     }
 
-    void doShoot(Shoot shoot){
-        switch (cells[shoot.X][shoot.Y]){
+    void doShoot(Shoot shoot) {
+        if (shoot.X == -1 && shoot.Y == -1) {
+            showShips();
+            for (int i = 0; i < size; i++) {
+                System.out.print("=");
+            }
+            System.out.println();
+            return;
+        }
+        if (shoot.X > size - 1 || shoot.Y > size - 1 || shoot.X < 0 || shoot.Y < 0) {
+            System.out.println("Выход за пределы боевого поля!");
+            return;
+        }
+        switch (cells[shoot.X][shoot.Y]) {
             case '.':
                 System.out.println("Промах");
                 cells[shoot.X][shoot.Y] = '*';
@@ -57,9 +70,12 @@ public class Field {
             case 'X':
                 System.out.println("Корабль подбит!");
                 cells[shoot.X][shoot.Y] = '-';
-//                System.out.println(cells);
+                showShoots();
                 break;
             case '*':
+                System.out.println("Уже стреляли!");
+                break;
+            case '-':
                 System.out.println("Уже стреляли!");
                 break;
             default:
@@ -67,13 +83,23 @@ public class Field {
         }
     }
 
-    void show() {
+    void showShoots() {
         for (char[] cell : cells) {
             for (char c : cell) {
 //                System.out.print(c);
                 if (c == 'X') {
                     System.out.print('.');
                 } else System.out.print(c);
+            }
+            System.out.println();
+        }
+
+    }
+
+    void showShips() {
+        for (char[] cell : cells) {
+            for (char c : cell) {
+                System.out.print(c);
             }
             System.out.println();
         }
